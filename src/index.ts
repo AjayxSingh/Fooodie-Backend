@@ -13,7 +13,11 @@ mongoose
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+    origin: 'https://fooodie-frontend.onrender.com',
+    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+  };
+app.use(cors(corsOptions));
 
 app.get('/health' , async (res:Response , req:Request ) =>{
     res.send({message:"Health ok"})
